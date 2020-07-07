@@ -1,4 +1,20 @@
+#[derive(Debug)]
+enum SpreadsheetCell {
+    Int(i32),
+    Float(f64),
+    Text(String)
+}
+
+
 fn main() {
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Float(10.12),
+        SpreadsheetCell::Text(String::from("blue"))
+    ];
+    for i in &row {
+        println!("{:?}", i);
+    }
     let mut v: Vec<i32> = Vec::new();
     v.push(5);
     v.push(6);
