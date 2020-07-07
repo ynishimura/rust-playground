@@ -28,4 +28,24 @@ fn main() {
     for c in "プログラミング言語Rust".chars() {
         println!("{}", c);
     }
+
+    use std::collections::HashMap;
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    scores.entry(String::from("Yellow")).or_insert(20);
+    scores.entry(String::from("Red")).or_insert(150); //なければ追加あれば無視
+    scores.entry(String::from("Yellow")).or_insert(130); //なければ追加あれば無視
+
+    // debug
+    println!("{:?}", scores);
+    for (key, value) in &scores {
+        println!("{}: {}", key, value);
+    }
+    // こんな書き方もできる
+    // let teams = vec![String::from("blue"), String::from("Yello")];
+    // let initial_scores = vec![10, 50];
+    // let scores2: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
 }
