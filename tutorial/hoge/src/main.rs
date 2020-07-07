@@ -10,6 +10,7 @@ fn main() {
 
     // v.push(9);
     for i in &mut v {
+        // *は参照外し演算子
         *i += 50;
         println!("{}",i);
     }
