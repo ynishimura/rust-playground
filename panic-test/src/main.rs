@@ -9,7 +9,7 @@ fn main() {
     // v[99];
 
     // hello.txtなしで走らせるとパニック
-    let f = File::open("hello.txt").unwrap();
+    let f = File::open("hello.txt").expect("Failed to open hello.txt");
 
     // let f = match f {
     //     Ok(file) => file,
