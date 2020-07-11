@@ -1,5 +1,8 @@
 pub trait Summary {
-    fn summarize(&self) -> String;
+    fn summarize(&self) -> String {
+        // defalt impl
+        String::from("(READ more...)")
+    }
 }
 
 pub struct NewsArticle {
