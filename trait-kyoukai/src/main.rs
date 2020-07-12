@@ -1,5 +1,7 @@
 // Tのトレイト境界にPartialOrdを指定する必要があります
-fn largest<T: PartialOrd>(list: &[T]) -> T {
+// 引数の値がCopyトレイトを実装しない型を含む可能性も出てきたので
+// トレイト境界にCopyを追加
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     let mut largest = list[0];
 
     for &item in list.iter() {
