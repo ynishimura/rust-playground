@@ -42,4 +42,7 @@ fn main() {
     let i = ImportantExcerpt {
         part: first_sentence,
     };
+
+    // エラーメッセージで'staticライフタイムを使用する提言を目撃する可能性があります。
+    // let s: &'static str = "I have a static lifetime.";
 }
