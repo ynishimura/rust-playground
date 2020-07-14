@@ -44,7 +44,8 @@ mod tests {
         );
     }
     #[test]
-    #[should_panic]
+    // 予想値は100以下でなければなりません
+    #[should_panic(expected = "Guess value must be less than or equal to 100")]
     fn greater_than_100() {
         Guess::new(200);
     }
@@ -75,9 +76,18 @@ pub struct Guess {
 
 impl Guess {
     pub fn new(value: u32) -> Guess {
-        if value < 1 || value > 100 {
-            //予想値は1から100の間でなければなりません
-            panic!("Guess value must be between 1 and 100, got {}.", value);
+        if value < 1 {
+            //予想値は、1以上でなければなりませんが、{}でした
+            panic!(
+                "Guess value must be greater than or equal to 1, got {}.",
+                value
+            );
+        } else if value > 100 {
+            //予想値は100以下でなければなりませんが、{}でした
+            panic!(
+                "Guess value must be less than or equal to 100, got {}.",
+                value
+            );
         }
 
         Guess { value }
