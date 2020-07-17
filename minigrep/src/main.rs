@@ -13,17 +13,7 @@ fn main() {
 
     println!("Searching for {}", config.query);
     println!("In file {}", config.filename);
-    // ファイルが見つかりませんでした
-    let mut f = File::open(config.filename).expect("file not found");
-
-    let mut contents = String::new();
-    f.read_to_string(&mut contents)
-        // ファイルの読み込み中に問題がありました
-        .expect("something went wrong reading the file");
-
-    // テキストは\n{}です
-    println!("With text:\n{}", contents);
-    // println!("{:?}", args);
+    run(config);
 }
 
 struct Config {
@@ -41,4 +31,17 @@ impl Config {
         let filename = args[2].clone();
         Ok(Config { query, filename })
     }
+}
+
+fn run(config: Config) {
+    // ファイルが見つかりませんでした
+    let mut f = File::open(config.filename).expect("file not found");
+
+    let mut contents = String::new();
+    f.read_to_string(&mut contents)
+        // ファイルの読み込み中に問題がありました
+        .expect("something went wrong reading the file");
+
+    // テキストは\n{}です
+    println!("With text:\n{}", contents);
 }
