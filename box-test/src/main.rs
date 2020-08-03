@@ -21,3 +21,10 @@ fn main() {
     // これはエラー
     // assert_eq!(5, y);
 }
+
+struct MyBox<T>(T);
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
