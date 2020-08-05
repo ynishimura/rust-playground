@@ -25,6 +25,8 @@ fn main() {
 
     let m = MyBox::new(String::from("Rust"));
     hello(&m);
+    // Rustに参照外し型強制がなかった場合に書かなければならないであろうコード
+    // hello(&(*m)[..]);
 }
 
 use std::ops::Deref;
