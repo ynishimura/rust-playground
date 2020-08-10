@@ -7,11 +7,19 @@ use std::rc::Rc;
 use List::{Cons, Nil};
 
 fn main() {
-    // 5と10を含むリストaを作ります。
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
-
-    // 3で始まるbと4で始まるcをつくる
-    // 5と10を含む最初のaリストを含めるとエラー。
+    // a生成後のカウント = {}
+    println!("count after creating a = {}", Rc::strong_count(&a));
     let b = Cons(3, Rc::clone(&a));
-    let c = Cons(4, Rc::clone(&a));
+    // b生成後のカウント = {}
+    println!("count after creating b = {}", Rc::strong_count(&a));
+    {
+        // スコープから抜けてaを参照 -> 3に増える
+        let c = Cons(4, Rc::clone(&a));
+        // c生成後のカウント = {}
+        println!("count after creating c = {}", Rc::strong_count(&a));
+    }
+    // dropとれいとにより3->2に変化
+    // cがスコープを抜けた後のカウント = {}
+    println!("count after c goes out of scope = {}", Rc::strong_count(&a));
 }
