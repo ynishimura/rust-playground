@@ -17,9 +17,13 @@ fn main() {
         data: String::from("some date"),
     };
     // Rustは、 Dropトレイトのdropメソッドを手動で呼ばせてくれません
-    c.drop(); //エラーになる
-    let d = CustomSmartPointer {
-        data: String::from("other stuff"),
-    };
-    println!("CustomSmartPointers created.");
+    // c.drop(); //エラーになる
+    drop(c); // std::mem::drop関数を使うことでdropできる
+    println!("CustomSmartPointer dropped befor the end of main.")
+
+    // dropした後はエラーになる
+    // let d = CustomSmartPointer {
+    //     data: String::from("other stuff"),
+    // };
+    // println!("CustomSmartPointers created.");
 }
