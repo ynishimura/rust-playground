@@ -14,8 +14,10 @@ fn main() {
     // Dropping CustomSmartPointer with data `other stuff`!
     // Dropping CustomSmartPointer with data `my stuff`!
     let c = CustomSmartPointer {
-        data: String::from("my stuff"),
+        data: String::from("some date"),
     };
+    // Rustは、 Dropトレイトのdropメソッドを手動で呼ばせてくれません
+    c.drop(); //エラーになる
     let d = CustomSmartPointer {
         data: String::from("other stuff"),
     };
